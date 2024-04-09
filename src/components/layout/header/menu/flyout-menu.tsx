@@ -1,9 +1,9 @@
 import { Accordion } from "@/components/common";
 import { ChevronDownIcon } from "@/components/icons";
-import { MenuItem } from "@/lib/shopify/types";
+import { Menu } from "@/lib/shopify/types";
 import Link from "next/link";
 
-export default function FlyoutMenu({ menu }: { menu: MenuItem }) {
+export default function FlyoutMenu({ menu }: { menu: Menu }) {
   const sortedSubItems = menu.items.sort((a, b) =>
     a.title.localeCompare(b.title)
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDownIcon } from "@/components/icons";
-import { MenuItem } from "@/lib/shopify/types";
+import type { MenuItem } from "@/lib/shopify/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import FlyoutMenu from "./flyout-menu";
