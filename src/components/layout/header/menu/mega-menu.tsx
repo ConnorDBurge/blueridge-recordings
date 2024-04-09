@@ -1,9 +1,10 @@
 import Link from "next/link";
 
+import { Menu } from "@/lib/shopify/types";
 import styles from "./menu-item.module.css";
 
-export default function MegaMenu({ menu }) {
-  const sortedSubItems = menu.items.sort((a, b) =>
+export default function MegaMenu({ menu }: { menu: Menu }) {
+  const sortedSubItems = menu?.items.sort((a, b) =>
     a.title.localeCompare(b.title)
   );
 

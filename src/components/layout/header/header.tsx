@@ -1,10 +1,10 @@
 import { HeaderLogo, SearchIcon } from "@/components/icons";
 import AnnouncementBar from "./anncouncement-bar";
-import MainMenu from "./menu";
+import { MainMenu } from "./menu";
 import { Search } from "./search";
 import { ShoppingCartButton } from "./shopping-cart";
 
-export default async function Header() {
+export async function Header() {
   return (
     <>
       <AnnouncementBar />

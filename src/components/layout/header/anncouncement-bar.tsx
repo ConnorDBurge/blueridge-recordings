@@ -5,10 +5,10 @@ import { getAdmin } from "@/lib/shopify";
 export default async function AnnouncementBar() {
   const { contactEmail, timezone, billingAddress, hours } = await getAdmin();
   const [abbreviated, long] = hours;
-  const Divider = () => <span className=" font-thin text-white">|</span>;
+  const Divider = () => <span className="font-thin text-white">|</span>;
 
   return (
-    <div className="hidden h-8 bg-black md:block">
+    <div className="bg-black hidden h-8 md:block">
       <div className="container">
         <div className="full-size flex">
           <div className="flex-1" />

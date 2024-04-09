@@ -1,7 +1,7 @@
 import { SearchIcon } from "@/components/icons";
 import SearchInput from "./search-input";
 
-export default function Search() {
+export function Search() {
   return (
     <div className="flex flex-1 justify-center">
       <div className="transition-500 w-full max-w-[750px]">

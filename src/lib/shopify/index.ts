@@ -1,12 +1,19 @@
 import {
-  MENU_QUERY,
-  STOREFRONT_SHOP_QUERY,
   ADMIN_SHOP_QUERY,
   LOCALE_QUERY,
   MARKETS_QUERY,
+  MENU_QUERY,
+  STOREFRONT_SHOP_QUERY,
 } from "@/lib/shopify/queries";
 import { _fetch, getPath } from "@/lib/utils";
-import { HTTPRequest, Menu, ShopifyMenuOperation } from "./types";
+import {
+  HTTPRequest,
+  Locales,
+  Menu,
+  Shop,
+  ShopAdmin,
+  ShopifyMenuOperation,
+} from "./types";
 
 const storefrontDomain = process.env.SHOPIFY_STOREFRONT_ENDPOINT || "";
 const storefrontToken = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || "";
@@ -31,29 +38,29 @@ async function admin<T>(args: HTTPRequest<T>) {
   });
 }
 
-export async function getStorefront() {
+export async function getStorefront(): Promise<Shop> {
   const res = await storefront({ query: STOREFRONT_SHOP_QUERY });
   return res.body?.data?.storefront || {};
 }
 
-export async function getAdmin() {
+export async function getAdmin(): Promise<ShopAdmin> {
   const res = await admin({ query: ADMIN_SHOP_QUERY });
   const hours = res.body?.data?.hours?.hours || [];
   const _admin = res.body?.data?.admin || {};
   return { ..._admin, hours };
 }
 
-export async function getLocales() {
+export async function getLocales(): Promise<Locales> {
   const res = await admin({ query: LOCALE_QUERY });
   return res.body?.data?.locales || [];
 }
 
-export async function getMarkets() {
+export async function getMarkets(): Promise<any> {
   const res = await admin({ query: MARKETS_QUERY });
   return res.body?.data?.markets?.nodes || [];
 }
 
-export async function getMenu(handle: string): Promise<Menu[]> {
+export async function getMenu(handle: string): Promise<Menu> {
   const res = await storefront<ShopifyMenuOperation>({
     query: MENU_QUERY,
     variables: { handle },

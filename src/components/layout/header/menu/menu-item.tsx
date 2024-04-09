@@ -1,13 +1,14 @@
 "use client";
 
 import { ChevronDownIcon } from "@/components/icons";
+import { MenuItem } from "@/lib/shopify/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import FlyoutMenu from "./flyout-menu";
-import styles from "./menu-item.module.css";
 import MegaMenu from "./mega-menu";
+import styles from "./menu-item.module.css";
 
-export default function MenuItem({ item }) {
+export default function MenuItem({ item }: { item: MenuItem }) {
   const pathname = usePathname();
   const isActive = pathname === item?.path;
   const isMegaMenu = item?.path === "/collections/all";

@@ -1,4 +1,4 @@
-export default function ShoppingCartIcon({ ...rest }) {
+export function ShoppingCartIcon({ ...rest }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

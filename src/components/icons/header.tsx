@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function HeaderLogo({
+export function HeaderLogo({
   primary = "#FED8A7",
   secondary = "#FFF",
   ...rest

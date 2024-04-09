@@ -1,12 +1,21 @@
-import { useState, useRef, useEffect } from "react";
 import { ChevronDownIcon } from "@/components/icons";
+import { useEffect, useRef, useState } from "react";
 
-export default function Accordion({ children, header }) {
-  const [accordionOpen, setAccordionOpen] = useState(false);
-  const accordionRef = useRef(null);
+export function Accordion({
+  children,
+  header,
+}: {
+  children: React.ReactNode;
+  header: string;
+}) {
+  const [accordionOpen, setAccordionOpen] = useState<boolean>(false);
+  const accordionRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event) => {
-    if (accordionRef.current && !accordionRef.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      accordionRef.current &&
+      !accordionRef.current.contains(event.target as Node)
+    ) {
       setAccordionOpen(false);
     }
   };

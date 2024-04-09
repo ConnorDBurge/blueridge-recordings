@@ -8,10 +8,10 @@ export default function SearchInput() {
     "Discover studio mixers",
     "Stream like a pro",
   ];
-  const [placeholder, setPlaceholder] = useState();
-  const [index, setIndex] = useState(0);
-  const [typing, setTyping] = useState(true);
-  const [position, setPosition] = useState(0);
+  const [placeholder, setPlaceholder] = useState<string>();
+  const [index, setIndex] = useState<number>(0);
+  const [typing, setTyping] = useState<boolean>(true);
+  const [position, setPosition] = useState<number>(0);
 
   useEffect(() => {
     const updateText = () => {
@@ -32,7 +32,7 @@ export default function SearchInput() {
           }
           setPlaceholder(placeholders[index].substring(0, position));
         },
-        typing ? 100 : 60,
+        typing ? 100 : 60
       );
     };
     updateText();

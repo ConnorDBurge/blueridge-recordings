@@ -2,7 +2,7 @@ import { TruckIcon, BoxIcon, ReturnIcon, PhoneIcon } from "@/components/icons";
 import { getMenu } from "@/lib/shopify";
 import Link from "next/link";
 
-export default async function Footer() {
+export async function Footer() {
   const primaryMenu = await getMenu("primary-menu");
   const footerMenu = await getMenu("footer");
 
