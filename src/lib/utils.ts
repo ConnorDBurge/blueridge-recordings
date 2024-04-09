@@ -6,17 +6,6 @@ export const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
   : "http://localhost:3000";
 
-export const createUrl = (pathname, params) => {
-  const paramsString = params.toString();
-  const queryString = `${paramsString.length ? "?" : ""}${paramsString}`;
-  return `${pathname}${queryString}`;
-};
-
-export const ensureStartsWith = (stringToCheck, startsWith) =>
-  stringToCheck.startsWith(startsWith)
-    ? stringToCheck
-    : `${startsWith}${stringToCheck}`;
-
 export const validateEnvironmentVariables = () => {
   const requiredEnvironmentVariables = [
     "SHOPIFY_STOREFRONT_ACCESS_TOKEN",
@@ -24,7 +13,7 @@ export const validateEnvironmentVariables = () => {
     "SHOPIFY_STOREFRONT_ENDPOINT",
     "SHOPIFY_ADMIN_ENDPOINT",
   ];
-  const missingEnvironmentVariables = [];
+  const missingEnvironmentVariables = [] as string[];
 
   requiredEnvironmentVariables.forEach((envVar) => {
     if (!process.env[envVar]) {
@@ -50,12 +39,19 @@ export const validateEnvironmentVariables = () => {
   }
 };
 
-export function getPath(url) {
+export function getPath(url: string) {
+  const siteDomain =
+    typeof process.env.SITE_DOMAIN === "string" ? process.env.SITE_DOMAIN : "";
+  const vercelUrl =
+    typeof process.env.NEXT_PUBLIC_VERCEL_URL === "string"
+      ? process.env.NEXT_PUBLIC_VERCEL_URL
+      : "";
+
   const path =
     url.includes("myshopify.com") ||
     url.includes("localhost") ||
-    url.includes(process.env.SITE_DOMAIN) ||
-    url.includes(process.env.NEXT_PUBLIC_VERCEL_URL)
+    url.includes(siteDomain) ||
+    url.includes(vercelUrl)
       ? `${new URL(url).pathname}${new URL(url).search}${new URL(url).hash}`
       : url;
   return path;
@@ -70,6 +66,15 @@ export async function _fetch({
   query,
   tags,
   variables,
+}: {
+  domain: string;
+  accessToken: string;
+  accessTokenHeader: string;
+  cache: RequestCache;
+  headers: Record<string, string>;
+  query: string;
+  tags: string[];
+  variables: Record<string, any>;
 }) {
   try {
     const result = await fetch(domain, {
