@@ -40,18 +40,11 @@ export const validateEnvironmentVariables = () => {
 };
 
 export function getPath(url: string) {
-  const siteDomain =
-    typeof process.env.SITE_DOMAIN === "string" ? process.env.SITE_DOMAIN : "";
-  const vercelUrl =
-    typeof process.env.NEXT_PUBLIC_VERCEL_URL === "string"
-      ? process.env.NEXT_PUBLIC_VERCEL_URL
-      : "";
-
   const path =
     url.includes("myshopify.com") ||
     url.includes("localhost") ||
-    url.includes(siteDomain) ||
-    url.includes(vercelUrl)
+    url.includes(process.env.SITE_DOMAIN || "") ||
+    url.includes(process.env.NEXT_PUBLIC_VERCEL_URL || "")
       ? `${new URL(url).pathname}${new URL(url).search}${new URL(url).hash}`
       : url;
   return path;
@@ -70,11 +63,11 @@ export async function _fetch({
   domain: string;
   accessToken: string;
   accessTokenHeader: string;
-  cache: RequestCache;
-  headers: Record<string, string>;
-  query: string;
-  tags: string[];
-  variables: Record<string, any>;
+  cache?: RequestCache;
+  headers?: Record<string, string>;
+  query?: string;
+  tags?: string[];
+  variables?: Record<string, any>;
 }) {
   try {
     const result = await fetch(domain, {

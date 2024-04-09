@@ -1,5 +1,3 @@
-import "server-only";
-
 import {
   MENU_QUERY,
   STOREFRONT_SHOP_QUERY,
@@ -8,13 +6,14 @@ import {
   MARKETS_QUERY,
 } from "@/lib/shopify/queries";
 import { _fetch, getPath } from "@/lib/utils";
+import { HTTPRequest, Menu, ShopifyMenuOperation } from "./types";
 
-const storefrontDomain = process.env.SHOPIFY_STOREFRONT_ENDPOINT;
-const storefrontToken = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
-const adminDomain = process.env.SHOPIFY_ADMIN_ENDPOINT;
-const adminToken = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN;
+const storefrontDomain = process.env.SHOPIFY_STOREFRONT_ENDPOINT || "";
+const storefrontToken = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || "";
+const adminDomain = process.env.SHOPIFY_ADMIN_ENDPOINT || "";
+const adminToken = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN || "";
 
-async function storefront(args) {
+async function storefront<T>(args: HTTPRequest<T>) {
   return await _fetch({
     domain: storefrontDomain,
     accessToken: storefrontToken,
@@ -23,7 +22,7 @@ async function storefront(args) {
   });
 }
 
-async function admin(args) {
+async function admin<T>(args: HTTPRequest<T>) {
   return _fetch({
     domain: adminDomain,
     accessToken: adminToken,
@@ -54,17 +53,17 @@ export async function getMarkets() {
   return res.body?.data?.markets?.nodes || [];
 }
 
-export async function getMenu(handle) {
-  const res = await storefront({
+export async function getMenu(handle: string): Promise<Menu[]> {
+  const res = await storefront<ShopifyMenuOperation>({
     query: MENU_QUERY,
     variables: { handle },
   });
 
   const menu = res.body?.data?.menu;
 
-  function calcDepth(items, depth = 0) {
+  function calcDepth(items: any[], depth = 0) {
     let maxDepth = depth;
-    items?.forEach((item) => {
+    items?.forEach((item: any) => {
       const childDepth =
         item.items?.length > 0 ? calcDepth(item.items, depth + 1) : depth;
       maxDepth = Math.max(maxDepth, childDepth);
