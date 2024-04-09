@@ -1,6 +1,6 @@
 import { gql } from "@/lib/utils";
 
-const imageFragment = gql`
+export const imageFragment = gql`
   fragment image on Image {
     url
     altText
@@ -8,5 +8,3 @@ const imageFragment = gql`
     height
   }
 `;
-
-export default imageFragment;

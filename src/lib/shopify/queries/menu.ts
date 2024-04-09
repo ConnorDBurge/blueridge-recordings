@@ -1,7 +1,7 @@
 import { gql } from "@/lib/utils";
 import { menuFragment } from "@/lib/shopify/fragments";
 
-const MENU_QUERY = gql`
+export const MENU_QUERY = gql`
   query getMenu($handle: String!) {
     menu(handle: $handle) {
       ...menu
@@ -9,5 +9,3 @@ const MENU_QUERY = gql`
   }
   ${menuFragment}
 `;
-
-export default MENU_QUERY;

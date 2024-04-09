@@ -1,6 +1,6 @@
 import { gql } from "@/lib/utils";
 
-const menuFragment = gql`
+export const menuFragment = gql`
   fragment MenuItem on MenuItem {
     id
     resourceId
@@ -36,5 +36,3 @@ const menuFragment = gql`
     }
   }
 `;
-
-export default menuFragment;

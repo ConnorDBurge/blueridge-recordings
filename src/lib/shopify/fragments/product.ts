@@ -1,8 +1,8 @@
 import { gql } from "@/lib/utils";
-import imageFragment from "./image";
-import seoFragment from "./seo";
+import { imageFragment } from "./image";
+import { seoFragment } from "./seo";
 
-const productFragment = gql`
+export const productFragment = gql`
   fragment product on Product {
     id
     handle
@@ -61,5 +61,3 @@ const productFragment = gql`
   ${imageFragment}
   ${seoFragment}
 `;
-
-export default productFragment;

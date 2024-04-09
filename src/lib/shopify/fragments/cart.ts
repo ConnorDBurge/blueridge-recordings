@@ -1,7 +1,7 @@
 import { gql } from "@/lib/utils";
-import productFragment from "./product";
+import { productFragment } from "./product";
 
-const cartFragment = gql`
+export const cartFragment = gql`
   fragment cart on Cart {
     id
     checkoutUrl
@@ -50,5 +50,3 @@ const cartFragment = gql`
   }
   ${productFragment}
 `;
-
-export default cartFragment;
