@@ -16,6 +16,7 @@ const config: Config = {
         primary: "#141028",
         secondary: "#FED8A7",
         tertiary: "#2A283C",
+        lavender: "#E5E4E8",
       },
     },
   },

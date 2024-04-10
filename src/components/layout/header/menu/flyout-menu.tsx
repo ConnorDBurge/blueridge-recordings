@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function FlyoutMenu({ menu }: { menu: Menu }) {
   const sortedSubItems = menu.items.sort((a, b) =>
-    a.title.localeCompare(b.title)
+    a.title.localeCompare(b.title),
   );
 
   return (

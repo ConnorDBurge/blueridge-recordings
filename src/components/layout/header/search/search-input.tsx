@@ -36,7 +36,7 @@ export default function SearchInput() {
       );
     };
     updateText();
-  }, [position, typing, index]);
+  }, [position, typing, index, placeholders]);
 
   return (
     <input
