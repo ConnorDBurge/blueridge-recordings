@@ -51,7 +51,7 @@ export const ADMIN_SHOP_QUERY = gql`
 export const LOCALE_QUERY = gql`
   query getLocales {
     locales: shopLocales {
-      locale
+      localċ
       name
     }
   }

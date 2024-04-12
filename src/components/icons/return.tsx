@@ -1,23 +1,20 @@
 export function ReturnIcon({ ...rest }) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="1.5rem"
-      height="1.5rem"
-      viewBox="0 0 14 14"
+      width="48"
+      height="48"
+      viewBox="0 0 16 16"
+      aria-hidden="true"
+      focusable="false"
+      role="presentation"
       fill="white"
       {...rest}
     >
-      <g
-        fill="none"
-        stroke="white"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+      <path
+        fill="white"
+        d="M9 .5a.5.5 0 000 1h1a4.5 4.5 0 110 9H2.2l3.15-3.15a.5.5 0 10-.7-.7l-4 4a.5.5 0 000 .7l4 4a.5.5 0 00.7-.7L2.21 11.5H10a5.5 5.5 0 100-11H9z"
         {...rest}
-      >
-        <path d="M.5 9.5h9a4 4 0 1 0 0-8h-3"></path>
-        <path d="m3.5 6.5l-3 3l3 3"></path>
-      </g>
+      ></path>
     </svg>
   );
 }

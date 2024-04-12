@@ -1,5 +1,6 @@
 import {
   ADMIN_SHOP_QUERY,
+  FOOTER_QUERY,
   LOCALE_QUERY,
   MARKETS_QUERY,
   MENU_QUERY,
@@ -7,6 +8,7 @@ import {
 } from "@/lib/shopify/queries";
 import { _fetch, getPath } from "@/lib/utils";
 import {
+  Connection,
   HTTPRequest,
   Locales,
   Menu,
@@ -20,6 +22,7 @@ const storefrontToken = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN || "";
 const adminDomain = process.env.SHOPIFY_ADMIN_ENDPOINT || "";
 const adminToken = process.env.SHOPIFY_ADMIN_ACCESS_TOKEN || "";
 
+/* Fetch Requests */
 async function storefront<T>(args: HTTPRequest<T>) {
   return await _fetch({
     domain: storefrontDomain,
@@ -38,6 +41,24 @@ async function admin<T>(args: HTTPRequest<T>) {
   });
 }
 
+/* Reshape Helper Functions */
+const removeEdgesAndNodes = (array: Connection<any>) => {
+  return array.edges.map((edge) => edge?.node);
+};
+
+const flattenFields = (array: any[]) => {
+  return array.map((item) => {
+    return {
+      id: item.id,
+      ...item.fields.reduce((acc: any, field: any) => {
+        acc[field.key] = field.value;
+        return acc;
+      }, {}),
+    };
+  });
+};
+
+/* Query & Mutation Functions */
 export async function getStorefront(): Promise<Shop> {
   const res = await storefront({ query: STOREFRONT_SHOP_QUERY });
   return res.body?.data?.storefront || {};
@@ -83,4 +104,13 @@ export async function getMenu(handle: string): Promise<Menu> {
   const totalDepth = calcDepth(menu?.items);
   menu.depth = totalDepth + 1;
   return menu;
+}
+
+export async function getFooter(): Promise<any> {
+  const res = await admin({ query: FOOTER_QUERY });
+  const banner = flattenFields(removeEdgesAndNodes(res.body?.data?.banner));
+  const _admin = res.body?.data?.admin || {};
+  const hours = res.body?.data?.hours?.hours || [];
+  const footer = { banner, ..._admin, hours };
+  return footer || {};
 }

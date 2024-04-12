@@ -15,7 +15,7 @@ export type HTTPRequest<T> = {
   variables?: ExtractVariables<T>;
 };
 
-export interface MenuItem {
+export type MenuItem = {
   id: string;
   resourceId: string;
   tags: string[];
@@ -25,15 +25,15 @@ export interface MenuItem {
   items: MenuItem[];
   depth: number;
   path: string;
-}
+};
 
-export interface Menu {
+export type Menu = {
   id: string;
   handle?: string;
   items: MenuItem[];
-}
+};
 
-export interface ShopifyMenuOperation {
+export type ShopifyMenuOperation = {
   data: {
     menu?: {
       items: {
@@ -45,9 +45,9 @@ export interface ShopifyMenuOperation {
   variables: {
     handle: string;
   };
-}
+};
 
-export interface Shop {
+export type Shop = {
   id: string;
   name: string;
   description: string | undefined;
@@ -59,15 +59,15 @@ export interface Shop {
     logo: ImageWrapper | undefined;
     squareLogo: ImageWrapper | undefined;
   };
-}
+};
 
-export interface ImageWrapper {
+export type ImageWrapper = {
   image: {
     url: string;
   };
-}
+};
 
-export interface ShopAdmin {
+export type ShopAdmin = {
   contactEmail: string;
   timezone: string;
   hours: Pair[];
@@ -75,11 +75,19 @@ export interface ShopAdmin {
     formatted: string[];
     phone: string;
   };
-}
+};
 
-export interface Locale {
+export type Locale = {
   locale: string;
   name: string;
-}
+};
 
 export type Locales = Locale[];
+
+export type Connection<T> = {
+  edges: Array<Edge<T>>;
+};
+
+export type Edge<T> = {
+  node: T;
+};
