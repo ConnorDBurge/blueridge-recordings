@@ -1,6 +1,6 @@
 import {
   ADMIN_SHOP_QUERY,
-  FOOTER_QUERY,
+  BANNER_QUERY,
   LOCALE_QUERY,
   MARKETS_QUERY,
   MENU_QUERY,
@@ -8,7 +8,9 @@ import {
 } from "@/lib/shopify/queries";
 import { _fetch, getPath } from "@/lib/utils";
 import {
+  BannerObject,
   Connection,
+  Footer,
   HTTPRequest,
   Locales,
   Menu,
@@ -106,11 +108,8 @@ export async function getMenu(handle: string): Promise<Menu> {
   return menu;
 }
 
-export async function getFooter(): Promise<any> {
-  const res = await admin({ query: FOOTER_QUERY });
+export async function getBanner(): Promise<BannerObject[]> {
+  const res = await admin({ query: BANNER_QUERY });
   const banner = flattenFields(removeEdgesAndNodes(res.body?.data?.banner));
-  const _admin = res.body?.data?.admin || {};
-  const hours = res.body?.data?.hours?.hours || [];
-  const footer = { banner, ..._admin, hours };
-  return footer || {};
+  return banner || {};
 }

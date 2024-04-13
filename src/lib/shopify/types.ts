@@ -91,3 +91,55 @@ export type Connection<T> = {
 export type Edge<T> = {
   node: T;
 };
+
+export type BannerObject = {
+  id: string;
+  title: string;
+  sub_title: string;
+  path: string;
+  icon: string;
+};
+
+export type Footer = {
+  banner: BannerObject[];
+  admin: ShopAdmin;
+};
+
+// {
+//   banner: [
+//     {
+//       id: 'gid://shopify/Metaobject/74211295306',
+//       title: 'Free Shipping',
+//       sub_title: 'Enjoy free shipping on all orders in the United States',
+//       path: '/policies/shipping-policy',
+//       icon: 'Truck'
+//     },
+//     {
+//       id: 'gid://shopify/Metaobject/74211328074',
+//       title: 'Ready to Ship',
+//       sub_title: 'All orders process within 1-2 days, on their way to you',
+//       path: '/policies/shipping-policy',
+//       icon: 'Box'
+//     },
+//     {
+//       id: 'gid://shopify/Metaobject/74211491914',
+//       title: 'Hassle Free Returns',
+//       sub_title: 'Free returns on all orders within 30 days',
+//       path: '/policies/refund-policy',
+//       icon: 'Return'
+//     },
+//     {
+//       id: 'gid://shopify/Metaobject/74211557450',
+//       title: 'Customer Service',
+//       sub_title: 'Need help? Call us at',
+//       path: null,
+//       icon: 'Phone'
+//     }
+//   ],
+//   admin: {
+//     contactEmail: 'team@blueridgerecordings.com',
+//     timezone: 'EDT',
+//     billingAddress: { formatted: [Array], phone: '(470) 400-0587' },
+//     hours: [ [Object], [Object] ]
+//   }
+// }

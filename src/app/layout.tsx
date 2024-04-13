@@ -25,7 +25,7 @@ export default async function RootLayout({
   const shop = await getStorefront();
   const favicon = shop?.brand?.squareLogo?.image?.url;
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         <link rel="icon" href={favicon} />
       </head>
