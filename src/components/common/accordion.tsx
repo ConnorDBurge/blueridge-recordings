@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronDownIcon } from "@/components/icons";
 import { useEffect, useRef, useState } from "react";
 

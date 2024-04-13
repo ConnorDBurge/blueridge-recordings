@@ -1,16 +1,16 @@
-import { Swiper } from "@/components/common";
-import { BoxIcon, PhoneIcon, ReturnIcon, TruckIcon } from "@/components/icons";
-import { getBanner } from "@/lib/shopify";
-import Link from "next/link";
-import { ReactElement } from "react";
+import { ReactElement } from 'react'
+import { getBanner } from '@/lib/shopify'
+import { Swiper } from '@/components/common'
+import { BoxIcon, PhoneIcon, ReturnIcon, TruckIcon } from '@/components/icons'
+import Link from 'next/link'
 
 export default async function Banner() {
-  const banner = await getBanner();
+  const bannerItems = await getBanner()
   return (
     <div className="bg-primary py-0">
       <div className="container relative">
         <Swiper>
-          {banner.map((item, index) => (
+          {bannerItems.map((item, index) => (
             <Link
               key={index}
               href={item?.path}
@@ -30,11 +30,11 @@ export default async function Banner() {
         </Swiper>
       </div>
     </div>
-  );
+  )
 }
 
 const icons: {
-  [key: string]: ReactElement;
+  [key: string]: ReactElement
 } = {
   truck: (
     <TruckIcon className="transition-300 flex-shrink-0 group-hover/cta:fill-secondary" />
@@ -48,4 +48,4 @@ const icons: {
   box: (
     <BoxIcon className="transition-300 flex-shrink-0 group-hover/cta:fill-secondary" />
   ),
-};
+}
