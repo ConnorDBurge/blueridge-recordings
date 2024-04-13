@@ -1,109 +1,110 @@
 export interface Pair {
-  key: string;
-  value: string;
+  key: string
+  value: string
 }
 
 export type ExtractVariables<T> = T extends { variables: object }
-  ? T["variables"]
-  : never;
+  ? T['variables']
+  : never
 
 export type HTTPRequest<T> = {
-  cache?: RequestCache;
-  headers?: Record<string, string>;
-  query?: string;
-  tags?: string[];
-  variables?: ExtractVariables<T>;
-};
+  cache?: RequestCache
+  headers?: Record<string, string>
+  query?: string
+  tags?: string[]
+  variables?: ExtractVariables<T>
+}
 
 export type MenuItem = {
-  id: string;
-  resourceId: string;
-  tags: string[];
-  title: string;
-  type: string;
-  url: string;
-  items: MenuItem[];
-  depth: number;
-  path: string;
-};
+  id: string
+  resourceId: string
+  tags: string[]
+  title: string
+  type: string
+  url: string
+  items: MenuItem[]
+  depth: number
+  path: string
+}
 
 export type Menu = {
-  id: string;
-  handle?: string;
-  items: MenuItem[];
-};
+  id: string
+  handle?: string
+  items: MenuItem[]
+}
 
 export type ShopifyMenuOperation = {
   data: {
     menu?: {
       items: {
-        title: string;
-        url: string;
-      }[];
-    };
-  };
+        title: string
+        url: string
+      }[]
+    }
+  }
   variables: {
-    handle: string;
-  };
-};
+    handle: string
+  }
+}
 
 export type Shop = {
-  id: string;
-  name: string;
-  description: string | undefined;
+  id: string
+  name: string
+  description: string | undefined
   primaryDomain: {
-    url: string;
-  };
+    url: string
+  }
   brand: {
-    slogan: string | undefined;
-    logo: ImageWrapper | undefined;
-    squareLogo: ImageWrapper | undefined;
-  };
-};
+    slogan: string | undefined
+    logo: ImageWrapper | undefined
+    squareLogo: ImageWrapper | undefined
+  }
+}
 
 export type ImageWrapper = {
   image: {
-    url: string;
-  };
-};
+    url: string
+  }
+}
 
 export type ShopAdmin = {
-  contactEmail: string;
-  timezone: string;
-  hours: Pair[];
+  name: string
+  contactEmail: string
+  timezone: string
+  hours: Pair[]
   billingAddress: {
-    formatted: string[];
-    phone: string;
-  };
-};
+    formatted: string[]
+    phone: string
+  }
+}
 
 export type Locale = {
-  locale: string;
-  name: string;
-};
+  locale: string
+  name: string
+}
 
-export type Locales = Locale[];
+export type Locales = Locale[]
 
 export type Connection<T> = {
-  edges: Array<Edge<T>>;
-};
+  edges: Array<Edge<T>>
+}
 
 export type Edge<T> = {
-  node: T;
-};
+  node: T
+}
 
 export type BannerObject = {
-  id: string;
-  title: string;
-  sub_title: string;
-  path: string;
-  icon: string;
-};
+  id: string
+  title: string
+  sub_title: string
+  path: string
+  icon: string
+}
 
 export type Footer = {
-  banner: BannerObject[];
-  admin: ShopAdmin;
-};
+  banner: BannerObject[]
+  admin: ShopAdmin
+}
 
 // {
 //   banner: [

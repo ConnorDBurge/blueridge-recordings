@@ -1,14 +1,14 @@
-import { getAdmin } from "@/lib/shopify";
-import Banner from "./banner";
+import { getAdmin, getMenu } from '@/lib/shopify'
+import Banner from './banner'
+import FooterMenus from './footer-menus'
 
 export async function Footer() {
-  const admin = await getAdmin();
+  const footerMenus = await getMenu('footer-primary')
+  const admin = await getAdmin()
   return (
     <>
       <Banner />
-      <div className="from-lavender flex-1 bg-gradient-to-b">
-        <div className="container pb-16 pt-8">Footer</div>
-      </div>
+      <FooterMenus menu={footerMenus} admin={admin} />
     </>
-  );
+  )
 }

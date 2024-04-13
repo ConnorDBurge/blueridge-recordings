@@ -1,13 +1,13 @@
-import { getMenu } from "@/lib/shopify";
-import HideOnScroll from "./hide-scroll";
-import MenuItem from "./menu-item";
+import { getMenu } from '@/lib/shopify'
+import HideOnScroll from './hide-scroll'
+import MenuItem from './menu-item'
 
 export async function MainMenu() {
-  const primaryMenu = await getMenu("primary-menu");
-  const secondaryMenu = await getMenu("secondary-menu");
+  const primaryMenu = await getMenu('primary-menu')
+  const secondaryMenu = await getMenu('secondary-menu')
   return (
     <HideOnScroll>
-      <div className="bg-primary">
+      <menu className="bg-primary">
         <nav className="group container hidden justify-between bg-transparent md:flex">
           <ul className="flex gap-3">
             {primaryMenu?.items?.map((item) => (
@@ -20,7 +20,7 @@ export async function MainMenu() {
             ))}
           </ul>
         </nav>
-      </div>
+      </menu>
     </HideOnScroll>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import { gql } from "@/lib/utils";
+import { gql } from '@/lib/utils'
 
 export const STOREFRONT_SHOP_QUERY = gql`
   query getStorefront {
@@ -24,11 +24,12 @@ export const STOREFRONT_SHOP_QUERY = gql`
       }
     }
   }
-`;
+`
 
 export const ADMIN_SHOP_QUERY = gql`
   query getAdmin {
     admin: shop {
+      name
       contactEmail
       timezone: timezoneAbbreviation
       billingAddress {
@@ -46,7 +47,7 @@ export const ADMIN_SHOP_QUERY = gql`
       }
     }
   }
-`;
+`
 
 export const LOCALE_QUERY = gql`
   query getLocales {
@@ -55,7 +56,7 @@ export const LOCALE_QUERY = gql`
       name
     }
   }
-`;
+`
 
 export const MARKETS_QUERY = gql`
   query getMarkets {
@@ -77,4 +78,4 @@ export const MARKETS_QUERY = gql`
       }
     }
   }
-`;
+`

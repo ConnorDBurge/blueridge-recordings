@@ -1,57 +1,44 @@
-"use client";
+'use client'
 
-import { ChevronDownIcon } from "@/components/icons";
-import { useEffect, useRef, useState } from "react";
+import { useState } from 'react'
+import { ChevronDownIcon } from '@/components/icons'
 
 export function Accordion({
   children,
   header,
+  open = false,
+  disabled = false,
+  className,
 }: {
-  children: React.ReactNode;
-  header: string;
+  children: React.ReactNode
+  header: React.ReactNode
+  open?: boolean
+  disabled?: boolean
+  className?: string
 }) {
-  const [accordionOpen, setAccordionOpen] = useState<boolean>(false);
-  const accordionRef = useRef<HTMLDivElement>(null);
-
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      accordionRef.current &&
-      !accordionRef.current.contains(event.target as Node)
-    ) {
-      setAccordionOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  const [accordionOpen, setAccordionOpen] = useState<boolean>(open)
 
   return (
-    <div ref={accordionRef} onMouseLeave={() => setAccordionOpen(false)}>
+    <div className={className}>
       <button
         onClick={() => setAccordionOpen(!accordionOpen)}
         className="group/acc flex w-full justify-between"
+        disabled={disabled}
       >
-        <div
-          className={`transition-300 mr-1 group-hover/acc:text-secondary
-          ${accordionOpen ? "text-secondary" : "text-white"}`}
-        >
-          {header}
-        </div>
-        <ChevronDownIcon
-          className={`transition-300 group-hover/acc:fill-secondary 
-          ${accordionOpen && "rotate-180 fill-secondary"}`}
-        />
+        <div className={`transition-300 mr-1`}>{header}</div>
+        {!disabled && (
+          <ChevronDownIcon
+            className={`transition-300 fill-primary
+          ${accordionOpen && 'rotate-180 '}`}
+          />
+        )}
       </button>
       <div
         className={`transition-500 overflow-hidden
-        ${accordionOpen ? "max-h-screen" : "max-h-0"}`}
+        ${accordionOpen ? 'max-h-screen' : 'max-h-0'}`}
       >
         {children}
       </div>
     </div>
-  );
+  )
 }
