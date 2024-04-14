@@ -1,5 +1,3 @@
-export * from './brand/blueridge'
-
 export * from './common/chevron-down'
 export * from './common/search'
 export * from './common/shopping-cart'

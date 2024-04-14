@@ -71,13 +71,16 @@ export default async function ContactInformation({
               </a>
             ))}
           </div>
-          <Image
-            className="mt-3"
-            src="https://cdn.shopify.com/s/files/1/0582/4738/1066/files/veteran-owned.svg"
-            alt="veteran-owned"
-            width={150}
-            height={0}
-          />
+          <div className="mt-3 w-[150px]">
+            <Image
+              priority
+              className="w-full h-auto"
+              src="/brand/veteran-owned.svg"
+              alt="veteran-owned"
+              width={0}
+              height={0}
+            />
+          </div>
         </div>
       </div>
     </menu>
