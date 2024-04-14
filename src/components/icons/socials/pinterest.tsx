@@ -4,7 +4,7 @@ export function PinterestIcon({ ...rest }) {
       width="24"
       height="24"
       viewBox="0 0 48 48"
-      fill="currentColor"
+      fill="#2A283C"
       aria-hidden="true"
       focusable="false"
       role="presentation"

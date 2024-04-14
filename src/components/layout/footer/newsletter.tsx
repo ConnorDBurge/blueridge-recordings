@@ -34,7 +34,7 @@ export default function NewsLetterSignUp({
             className="absolute inset-y-0 right-0 flex items-center px-6"
             aria-label="Submit email"
           >
-            <AirplaneIcon className="h-5 w-5 rotate-45" />
+            <AirplaneIcon className="h-5 w-5 rotate-45 hover:scale-125 transition-300" />
           </button>
         </form>
       </Accordion>

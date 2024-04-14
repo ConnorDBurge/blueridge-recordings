@@ -12,7 +12,7 @@ export default function FooterMenu({
   isDesktop: boolean
 }) {
   return (
-    <menu className="lg:flex-grow-0 lg:basis-auto lg:min-w-[150px] lg:max-w-1/4 md:border-none border-t-[1px] border-[#BEBBC4] mb-6 md:mb-0">
+    <menu className="lg:flex-grow-0 lg:basis-auto lg:min-w-[130px] lg:max-w-1/4 md:border-none border-t-[1px] border-[#BEBBC4] mb-6 md:mb-0">
       <Accordion
         disabled={isDesktop}
         header={<h4>{menu.title}</h4>}

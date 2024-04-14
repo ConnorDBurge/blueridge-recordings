@@ -59,7 +59,7 @@ export default async function ContactInformation({
           <Link href="/" className="text-tertiary hover:text-primary">
             {long?.value} {timezone}
           </Link>
-          <div className="flex gap-4 flex-wrap mt-4">
+          <div className="flex gap-5 flex-wrap mt-4">
             {socials.map((social) => (
               <a
                 key={social?.name}

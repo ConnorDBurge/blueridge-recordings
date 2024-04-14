@@ -9,11 +9,11 @@ export async function Footer() {
   const admin = await getAdmin()
 
   return (
-    <>
+    <section>
       <Suspense>
         <Banner />
         <FooterMenus menu={footerMenus} admin={admin} />
       </Suspense>
-    </>
+    </section>
   )
 }

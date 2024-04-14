@@ -4,7 +4,7 @@ export function InstagramIcon({ ...rest }) {
       width="24"
       height="24"
       viewBox="0 0 20 20"
-      fill="currentColor"
+      fill="#2A283C"
       aria-hidden="true"
       focusable="false"
       role="presentation"
