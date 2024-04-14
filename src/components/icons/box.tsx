@@ -16,5 +16,5 @@ export function BoxIcon({ ...rest }) {
         {...rest}
       ></path>
     </svg>
-  );
+  )
 }

@@ -1,11 +1,10 @@
-import Link from "next/link";
-
-import { getAdmin } from "@/lib/shopify";
+import { getAdmin } from '@/lib/shopify'
+import Link from 'next/link'
 
 export default async function AnnouncementBar() {
-  const { contactEmail, timezone, billingAddress, hours } = await getAdmin();
-  const [abbreviated, long] = hours;
-  const Divider = () => <span className="font-thin text-white">|</span>;
+  const { contactEmail, timezone, billingAddress, hours } = await getAdmin()
+  const [abbreviated, long] = hours
+  const Divider = () => <span className="font-thin text-white">|</span>
 
   return (
     <div className="bg-black hidden h-8 md:block">
@@ -34,5 +33,5 @@ export default async function AnnouncementBar() {
         </div>
       </div>
     </div>
-  );
+  )
 }

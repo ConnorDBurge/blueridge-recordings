@@ -17,7 +17,6 @@ export function Accordion({
   const [accordionOpen, setAccordionOpen] = useState<boolean>(false)
 
   useEffect(() => {
-    // When disabled changes, set the accordion to open if disabled, else reset to default closed state
     setAccordionOpen(disabled ? true : false)
   }, [disabled])
 
@@ -25,18 +24,18 @@ export function Accordion({
     <div className={className}>
       <button
         onClick={() => setAccordionOpen(!accordionOpen)}
-        className="group/acc flex w-full justify-between"
+        className={`flex w-full justify-between transition-300 ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
         disabled={disabled}
       >
-        <div className={`transition-300 mr-1`}>{header}</div>
+        <div className="mr-1 transition-300">{header}</div>
         {!disabled && (
           <ChevronDownIcon
-            className={`transition-300 fill-primary ${accordionOpen ? 'rotate-180' : ''}`}
+            className={`fill-current text-primary transition-300 ${accordionOpen ? 'rotate-180' : ''}`}
           />
         )}
       </button>
       <div
-        className={`transition-500 overflow-hidden ${accordionOpen ? 'max-h-screen' : 'max-h-0'}`}
+        className={`transition-300 overflow-hidden ${accordionOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
       >
         {children}
       </div>

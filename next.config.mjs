@@ -5,6 +5,9 @@ const nextConfig = {
       fullUrl: true,
     },
   },
-};
+  images: {
+    domains: ['localhost', 'cdn.shopify.com'],
+  },
+}
 
-export default nextConfig;
+export default nextConfig
