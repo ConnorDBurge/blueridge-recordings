@@ -1,3 +1,5 @@
+'use client'
+
 import { MenuItem } from '@/lib/shopify/types'
 import { Accordion } from '@/components/common'
 import Link from 'next/link'

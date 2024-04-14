@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from 'next/link'
 
-export function HeaderLogo({
-  primary = "#FED8A7",
-  secondary = "#FFF",
+export function BlueRidgeIcon({
+  primary = '#FED8A7',
+  secondary = '#FFF',
   ...rest
 }) {
   return (
@@ -37,5 +37,5 @@ export function HeaderLogo({
         </g>
       </svg>
     </Link>
-  );
+  )
 }

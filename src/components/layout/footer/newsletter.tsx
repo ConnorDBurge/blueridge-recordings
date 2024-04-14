@@ -1,3 +1,5 @@
+'use client'
+
 import { Accordion } from '@/components/common'
 import { AirplaneIcon } from '@/components/icons'
 
@@ -24,7 +26,7 @@ export default function NewsLetterSignUp({
             name="newsletter"
             autoComplete="off"
             type="email"
-            className="block w-full h-[43px] rounded-md border border-[#D0CFD4] p-6 pr-16 transition-colors duration-300 text-sm text-tertiary placeholder:text-sm focus:border-gray-400 focus:ring-0 leading-6"
+            className="block w-full h-[43px] rounded-md border border-[#D0CFD4] p-6 pr-16 transition-colors duration-300 text-sm text-tertiary placeholder:text-sm focus:border-tertiary focus:ring-0 leading-6"
             placeholder="Your email"
           />
           <button
