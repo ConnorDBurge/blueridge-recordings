@@ -14,23 +14,29 @@ export function Accordion({
   disabledOnDesktop?: boolean
   className?: string
 }) {
-  const [accordionOpen, setAccordionOpen] = useState<boolean>(false)
-  const [isDesktop, setIsDesktop] = useState<boolean>(window.innerWidth > 768)
+  const [accordionOpen, setAccordionOpen] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
 
   useEffect(() => {
     const updateDesktopStatus = () => {
-      const newIsDesktop = window.innerWidth > 768
-      setIsDesktop(newIsDesktop)
-      if (disabledOnDesktop && newIsDesktop) {
-        setAccordionOpen(true)
-      } else {
-        setAccordionOpen(false)
+      if (typeof window !== 'undefined') {
+        const newIsDesktop = window.innerWidth > 768
+        setIsDesktop(newIsDesktop)
+        if (disabledOnDesktop && newIsDesktop) {
+          setAccordionOpen(true)
+        } else {
+          setAccordionOpen(false)
+        }
       }
     }
+
     updateDesktopStatus()
+
     window.addEventListener('resize', updateDesktopStatus)
-    return () => window.removeEventListener('resize', updateDesktopStatus)
-  }, [])
+    return () => {
+      window.removeEventListener('resize', updateDesktopStatus)
+    }
+  }, [disabledOnDesktop])
 
   return (
     <div className={className}>
