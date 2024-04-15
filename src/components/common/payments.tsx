@@ -10,12 +10,12 @@ export async function PaymentMethods() {
     <div className="flex flex-wrap gap-2">
       {[...cardBrands, ...digitalWallets].map((brand, index) => (
         <Link
+          key={index}
           href="/pages/billing-terms-conditions"
           className="no-underline hover:scale-110 transition-300"
         >
           <Image
             priority
-            key={index}
             src={`/payments/${brand}.svg`}
             alt={brand}
             width={36}
