@@ -1,5 +1,5 @@
 import { getMenu, getStorefront } from '@/lib/shopify'
-import { PaymentMethods } from '@/components/common'
+import { PaymentMethods, Socials } from '@/components/common'
 import Link from 'next/link'
 
 export default async function FooterMetaData() {
@@ -9,7 +9,10 @@ export default async function FooterMetaData() {
   return (
     <div className="container pb-5">
       <div className="flex flex-col">
-        <PaymentMethods />
+        <div className="flex flex-col gap-5 justify-between md:items-center md:flex-row-reverse">
+          <Socials />
+          <PaymentMethods />
+        </div>
         <div className="border-t-[1px] border-divider w-full h-[1px] mt-5" />
         <div className="flex md:items-center items-start justify-between md:flex-row mt-5 flex-col-reverse">
           <Link

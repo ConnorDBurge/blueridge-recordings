@@ -52,7 +52,6 @@ export default async function ContactInformation() {
           <Link href="/" className="text-tertiary hover:text-primary">
             {long?.value} {timezone}
           </Link>
-          <Socials className="mt-4" />
           <div className="mt-3 w-[150px]">
             <Image
               priority

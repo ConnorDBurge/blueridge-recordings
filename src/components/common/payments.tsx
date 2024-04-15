@@ -12,7 +12,7 @@ export async function PaymentMethods() {
         <Link
           key={index}
           href="/pages/billing-terms-conditions"
-          className="no-underline hover:scale-110 transition-300"
+          className="no-underline hover:scale-125 transition-300"
         >
           <Image
             priority

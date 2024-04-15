@@ -8,7 +8,7 @@ import Link from 'next/link'
 
 export function Socials({ className }: { className?: string }) {
   return (
-    <div className={`flex gap-5 flex-wrap ${className}`}>
+    <div className={`flex gap-x-5 flex-wrap ${className}`}>
       {socials.map((social) => (
         <Link
           key={social?.name}
