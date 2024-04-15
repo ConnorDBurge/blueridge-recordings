@@ -30,6 +30,7 @@ export type MenuItem = {
 export type Menu = {
   id: string
   handle?: string
+  title?: string
   items: MenuItem[]
 }
 

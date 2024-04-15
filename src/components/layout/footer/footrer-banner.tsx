@@ -4,7 +4,7 @@ import { Swiper } from '@/components/common'
 import { BoxIcon, PhoneIcon, ReturnIcon, TruckIcon } from '@/components/icons'
 import Link from 'next/link'
 
-export default async function Banner() {
+export default async function FooterBanner() {
   const bannerItems = await getBanner()
   return (
     <div className="bg-primary py-0">

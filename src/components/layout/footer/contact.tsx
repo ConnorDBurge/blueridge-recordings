@@ -1,18 +1,11 @@
-import { ShopAdmin } from '@/lib/shopify/types'
-import {
-  FacebookIcon,
-  InstagramIcon,
-  PinterestIcon,
-  LinkedInIcon,
-} from '@/components/icons'
+import { getAdmin } from '@/lib/shopify'
+import { Socials } from '@/components/common'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default async function ContactInformation({
-  admin,
-}: {
-  admin: ShopAdmin
-}) {
+export default async function ContactInformation() {
+  const admin = await getAdmin()
+
   const [company, street, suite, city, state, zip] =
     admin?.billingAddress?.formatted
   const phone = admin?.billingAddress?.phone
@@ -24,18 +17,18 @@ export default async function ContactInformation({
   } = admin
 
   return (
-    <menu className="flex-grow flex-shrink basis-[350px] md:border-none border-t-[1px] border-[#BEBBC4] mt-6 md:mt-0">
+    <menu className="flex-grow flex-shrink basis-[350px] mt-6 md:mt-0">
       <div className="mt-6 md:mt-0">
         <h4>{company}</h4>
         <div className="flex flex-col gap-2">
           <h4 className="mb-2">
-            <a
+            <Link
               target="_blank"
               href={`https://www.google.com/search?q=${name}`}
               className="no-underline"
             >
               {name}
-            </a>
+            </Link>
           </h4>
           <Link
             href={`tel:${phone}`}
@@ -49,28 +42,17 @@ export default async function ContactInformation({
           >
             {contactEmail}
           </Link>
-          <a
+          <Link
             target="_blank"
             href={`https://www.google.com/search?q=${name}`}
             className="text-tertiary hover:text-primary"
           >
             {street} {suite}, {city}, {state} {zip}
-          </a>
+          </Link>
           <Link href="/" className="text-tertiary hover:text-primary">
             {long?.value} {timezone}
           </Link>
-          <div className="flex gap-5 flex-wrap mt-4">
-            {socials.map((social) => (
-              <a
-                key={social?.name}
-                href={social?.url}
-                target="_blank"
-                className="no-underline hover:scale-125 transition-300"
-              >
-                {social?.icon}
-              </a>
-            ))}
-          </div>
+          <Socials className="mt-4" />
           <div className="mt-3 w-[150px]">
             <Image
               priority
@@ -86,27 +68,3 @@ export default async function ContactInformation({
     </menu>
   )
 }
-
-/* These are set up in Shopify store brand settings, but Shopify does not expose these values via any API(s) */
-const socials = [
-  {
-    name: 'Facebook',
-    url: 'https://m.facebook.com/blueridgerecordings',
-    icon: <FacebookIcon />,
-  },
-  {
-    name: 'Instagram',
-    url: 'https://www.instagram.com/blueridgerecordings',
-    icon: <InstagramIcon />,
-  },
-  {
-    name: 'Pinterest',
-    url: 'https://www.pinterest.com/blueridgerecordings',
-    icon: <PinterestIcon />,
-  },
-  {
-    name: 'LinkedIn',
-    url: 'https://www.linkedin.com/company/blueridge-recordings',
-    icon: <LinkedInIcon />,
-  },
-]

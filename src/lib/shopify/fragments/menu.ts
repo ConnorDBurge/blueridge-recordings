@@ -1,4 +1,4 @@
-import { gql } from "@/lib/utils";
+import { gql } from '@/lib/utils'
 
 export const menuFragment = gql`
   fragment MenuItem on MenuItem {
@@ -30,9 +30,10 @@ export const menuFragment = gql`
 
   fragment menu on Menu {
     id
+    title
     handle
     items {
       ...ParentMenuItem
     }
   }
-`;
+`

@@ -6,36 +6,48 @@ import { ChevronDownIcon } from '@/components/icons'
 export function Accordion({
   children,
   header,
-  disabled = false,
+  disabledOnDesktop = false,
   className,
 }: {
   children: React.ReactNode
   header: React.ReactNode
-  disabled?: boolean
+  disabledOnDesktop?: boolean
   className?: string
 }) {
   const [accordionOpen, setAccordionOpen] = useState<boolean>(false)
+  const [isDesktop, setIsDesktop] = useState<boolean>(window.innerWidth > 768)
 
   useEffect(() => {
-    setAccordionOpen(disabled ? true : false)
-  }, [disabled])
+    const updateDesktopStatus = () => {
+      const newIsDesktop = window.innerWidth > 768
+      setIsDesktop(newIsDesktop)
+      if (disabledOnDesktop && newIsDesktop) {
+        setAccordionOpen(true)
+      } else {
+        setAccordionOpen(false)
+      }
+    }
+    updateDesktopStatus()
+    window.addEventListener('resize', updateDesktopStatus)
+    return () => window.removeEventListener('resize', updateDesktopStatus)
+  }, [])
 
   return (
     <div className={className}>
       <button
         onClick={() => setAccordionOpen(!accordionOpen)}
-        className={`flex w-full justify-between transition-300 ${disabled ? 'cursor-not-allowed' : 'cursor-pointer'}`}
-        disabled={disabled}
+        className={`flex w-full justify-between items-center transition-300 ${disabledOnDesktop && isDesktop ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+        disabled={disabledOnDesktop && isDesktop}
       >
         <div className="mr-1 transition-300">{header}</div>
-        {!disabled && (
+        {!(disabledOnDesktop && isDesktop) && (
           <ChevronDownIcon
-            className={`fill-current text-primary transition-300 ${accordionOpen ? 'rotate-180' : ''}`}
+            className={`fill-current text-primary transition-300 transform ${accordionOpen && 'rotate-180'}`}
           />
         )}
       </button>
       <div
-        className={`transition-300 overflow-hidden ${accordionOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+        className={`transition-300 overflow-hidden ${accordionOpen ? 'max-h-96' : 'max-h-0'}`}
       >
         {children}
       </div>

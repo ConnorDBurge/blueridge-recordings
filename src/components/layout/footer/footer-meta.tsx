@@ -10,7 +10,7 @@ export default async function FooterMetaData() {
     <div className="container pb-5">
       <div className="flex flex-col">
         <PaymentMethods />
-        <div className="border-t-[1px] border-[#D0CFD4] w-full h-[1px] mt-5" />
+        <div className="border-t-[1px] border-divider w-full h-[1px] mt-5" />
         <div className="flex md:items-center items-start justify-between md:flex-row mt-5 flex-col-reverse">
           <Link
             href="/"

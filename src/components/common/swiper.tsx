@@ -1,14 +1,13 @@
-"use client";
+'use client'
 
-import { ChevronDownIcon } from "@/components/icons";
-import React, { useState } from "react";
-
-import SwiperType from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Navigation } from "swiper/modules";
-import { SwiperSlide, Swiper as _Swiper, useSwiper } from "swiper/react";
+import React, { useState } from 'react'
+import SwiperType from 'swiper'
+import { ChevronDownIcon } from '@/components/icons'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import { Navigation } from 'swiper/modules'
+import { SwiperSlide, Swiper as _Swiper, useSwiper } from 'swiper/react'
 
 export function Swiper({
   children,
@@ -16,18 +15,18 @@ export function Swiper({
   prevIcon,
   nextIcon,
 }: {
-  children: React.ReactNode[];
-  breakpoints?: Record<string, any>;
-  prevIcon?: React.ReactNode;
-  nextIcon?: React.ReactNode;
+  children: React.ReactNode[]
+  breakpoints?: Record<string, any>
+  prevIcon?: React.ReactNode
+  nextIcon?: React.ReactNode
 }) {
-  const [isBeginning, setIsBeginning] = useState(true);
-  const [isEnd, setIsEnd] = useState(false);
+  const [isBeginning, setIsBeginning] = useState(true)
+  const [isEnd, setIsEnd] = useState(false)
 
   const handleSlideChange = (swiper: SwiperType) => {
-    setIsBeginning(swiper.isBeginning);
-    setIsEnd(swiper.isEnd);
-  };
+    setIsBeginning(swiper.isBeginning)
+    setIsEnd(swiper.isEnd)
+  }
 
   return (
     <_Swiper
@@ -61,11 +60,11 @@ export function Swiper({
       ))}
       {!isEnd && <RightNav icon={nextIcon} />}
     </_Swiper>
-  );
+  )
 }
 
 const LeftNav = ({ icon }: { icon: React.ReactNode }) => {
-  const swiper = useSwiper();
+  const swiper = useSwiper()
 
   return (
     <button
@@ -81,11 +80,11 @@ const LeftNav = ({ icon }: { icon: React.ReactNode }) => {
         />
       )}
     </button>
-  );
-};
+  )
+}
 
 const RightNav = ({ icon }: { icon: React.ReactNode }) => {
-  const swiper = useSwiper();
+  const swiper = useSwiper()
 
   return (
     <button
@@ -101,5 +100,5 @@ const RightNav = ({ icon }: { icon: React.ReactNode }) => {
         />
       )}
     </button>
-  );
-};
+  )
+}

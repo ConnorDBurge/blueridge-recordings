@@ -7,7 +7,7 @@ export async function PaymentMethods() {
   const { cardBrands, digitalWallets } = storefront?.paymentSettings
 
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-x-2">
       {[...cardBrands, ...digitalWallets].map((brand, index) => (
         <Link
           key={index}

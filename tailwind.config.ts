@@ -16,7 +16,7 @@ const config: Config = {
         secondary: '#FED8A7',
         tertiary: '#2A283C',
         lavender: '#E5E4E8',
-        divider: '#BEBBC4',
+        divider: '#D0CFD4',
       },
     },
   },

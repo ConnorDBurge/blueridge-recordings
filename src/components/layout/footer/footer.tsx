@@ -1,22 +1,15 @@
-import { Suspense } from 'react'
-import { getAdmin, getMenu, getStorefront } from '@/lib/shopify'
-import Banner from './banner'
 import FooterMenus from './footer-menus'
 import FooterMetaData from './footer-meta'
+import FooterBanner from './footrer-banner'
 
 export async function Footer() {
-  const footerMenus = await getMenu('footer-primary')
-  const admin = await getAdmin()
-
   return (
     <section>
-      <Suspense>
-        <Banner />
-        <footer className="from-lavender to-white bg-gradient-to-b flex flex-col gap-5">
-          <FooterMenus menu={footerMenus} admin={admin} />
-          <FooterMetaData />
-        </footer>
-      </Suspense>
+      <FooterBanner />
+      <footer className="from-lavender to-white bg-gradient-to-b flex flex-col gap-5">
+        <FooterMenus />
+        <FooterMetaData />
+      </footer>
     </section>
   )
 }
