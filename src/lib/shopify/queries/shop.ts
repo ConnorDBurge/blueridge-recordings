@@ -22,6 +22,10 @@ export const STOREFRONT_SHOP_QUERY = gql`
           }
         }
       }
+      paymentSettings {
+        cardBrands: acceptedCardBrands
+        digitalWallets: supportedDigitalWallets
+      }
     }
   }
 `

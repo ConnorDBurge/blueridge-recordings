@@ -11,7 +11,7 @@ export default function NewsLetterSignUp({
   return (
     <menu className="flex-grow-0 flex-shrink basis-[300px] mb-6 md:mb-0">
       <Accordion disabled={isDesktop} header={<h4>Newsletter</h4>}>
-        <p className="font-light mt-5 text-tertiary">
+        <p className="mt-5 text-tertiary">
           Sign up for exclusive offers, original stories, events and more.
         </p>
         <form

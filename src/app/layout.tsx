@@ -1,31 +1,30 @@
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Suspense } from "react";
-
-import { Footer, Header } from "@/components/layout";
-import { getStorefront } from "@/lib/shopify";
-import { baseUrl } from "@/lib/utils";
-import "./globals.css";
+import { Suspense } from 'react'
+import { getStorefront } from '@/lib/shopify'
+import { baseUrl } from '@/lib/utils'
+import { Footer, Header } from '@/components/layout'
+import './globals.css'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export async function generateMetadata() {
-  const shop = await getStorefront();
+  const shop = await getStorefront()
   const metadata = {
     metadataBaseUrl: new URL(baseUrl),
     title: shop?.name,
     description: shop?.description,
-  };
+  }
 
-  return metadata;
+  return metadata
 }
 
 export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const shop = await getStorefront();
-  const favicon = shop?.brand?.squareLogo?.image?.url;
+  const shop = await getStorefront()
+  const favicon = shop?.brand?.squareLogo?.image?.url
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href={favicon} />
       </head>
@@ -36,5 +35,5 @@ export default async function RootLayout({
         <SpeedInsights />
       </body>
     </html>
-  );
+  )
 }

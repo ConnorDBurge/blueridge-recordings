@@ -10,7 +10,6 @@ import { _fetch, getPath } from '@/lib/utils'
 import {
   BannerObject,
   Connection,
-  Footer,
   HTTPRequest,
   Locales,
   Menu,

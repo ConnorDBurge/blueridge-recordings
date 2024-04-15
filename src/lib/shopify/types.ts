@@ -59,6 +59,10 @@ export type Shop = {
     logo: ImageWrapper | undefined
     squareLogo: ImageWrapper | undefined
   }
+  paymentSettings: {
+    cardBrands: string[]
+    digitalWallets: string[]
+  }
 }
 
 export type ImageWrapper = {
