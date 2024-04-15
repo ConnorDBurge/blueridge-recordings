@@ -1,3 +1,6 @@
+'use server'
+
+import { NEWSLETTER_SUBSCRIBE } from '@/lib/shopify/mutations'
 import {
   ADMIN_SHOP_QUERY,
   BANNER_QUERY,
@@ -10,6 +13,7 @@ import { _fetch, getPath } from '@/lib/utils'
 import {
   BannerObject,
   Connection,
+  CustomerSignUpOperation,
   HTTPRequest,
   Locales,
   Menu,
@@ -59,7 +63,7 @@ const flattenFields = (array: any[]) => {
   })
 }
 
-/* Query & Mutation Functions */
+/* Query Functions */
 export async function getStorefront(): Promise<Shop> {
   const res = await storefront({ query: STOREFRONT_SHOP_QUERY })
   return res.body?.data?.storefront || {}
@@ -111,4 +115,24 @@ export async function getBanner(): Promise<BannerObject[]> {
   const res = await admin({ query: BANNER_QUERY })
   const banner = flattenFields(removeEdgesAndNodes(res.body?.data?.banner))
   return banner || {}
+}
+
+/* Mutation Functions */
+export async function newsletterSignUp(formData: FormData) {
+  const email = formData.get('email')
+  const res = await admin<CustomerSignUpOperation>({
+    query: NEWSLETTER_SUBSCRIBE,
+    variables: {
+      input: {
+        email: email as string,
+        emailMarketingConsent: {
+          marketingState: 'SUBSCRIBED',
+        },
+      },
+    },
+  })
+
+  const { userErrors } = res.body?.data?.customerCreate || {}
+  const errors = userErrors.map((e: { message: string }) => e.message)
+  return errors.length > 0 ? errors[0] : 'Success'
 }

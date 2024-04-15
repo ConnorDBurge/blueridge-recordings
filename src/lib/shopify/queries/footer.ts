@@ -1,4 +1,4 @@
-import { gql } from "@/lib/utils";
+import { gql } from '@/lib/utils'
 
 export const BANNER_QUERY = gql`
   query getBanner {
@@ -14,4 +14,4 @@ export const BANNER_QUERY = gql`
       }
     }
   }
-`;
+`

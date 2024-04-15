@@ -15,6 +15,31 @@ export type HTTPRequest<T> = {
   variables?: ExtractVariables<T>
 }
 
+export type CustomerSignUpOperation = {
+  data: {
+    customerCreate: {
+      customer: {
+        email: string
+        emailMarketingConsent: {
+          marketingState: string
+        }
+      }
+      userErrors: {
+        field: string
+        message: string
+      }[]
+    }
+  }
+  variables: {
+    input: {
+      email: string
+      emailMarketingConsent: {
+        marketingState: string
+      }
+    }
+  }
+}
+
 export type MenuItem = {
   id: string
   resourceId: string
