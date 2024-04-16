@@ -1,24 +1,17 @@
 'use client'
 
-import { useRef, useState } from 'react'
-import { useFormStatus } from 'react-dom'
+import { useRef } from 'react'
 import { newsletterSignUp } from '@/lib/shopify'
 import { AirplaneIcon } from '@/components/icons'
 
 export function NewsletterSignUp() {
-  const { pending } = useFormStatus()
   const newsletterRef = useRef<HTMLFormElement>(null)
-  const [submitted, setSubmitted] = useState(false)
-
-  console.log(pending)
-
   return (
     <form
       ref={newsletterRef}
       action={async (formData) => {
         await newsletterSignUp(formData)
         newsletterRef.current?.reset()
-        setSubmitted(true)
       }}
       className="relative mt-5 z-0"
     >
