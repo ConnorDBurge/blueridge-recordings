@@ -1,36 +1,36 @@
-"use client";
+'use client'
 
-import { ChevronDownIcon } from "@/components/icons";
-import type { MenuItem } from "@/lib/shopify/types";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import FlyoutMenu from "./flyout-menu";
-import MegaMenu from "./mega-menu";
-import styles from "./menu-item.module.css";
+import type { MenuItem } from '@/lib/shopify/types'
+import { ChevronDownIcon } from '@/components/icons'
+import FlyoutMenu from './flyout-menu'
+import MegaMenu from './mega-menu'
+import styles from './menu-item.module.css'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function MenuItem({ item }: { item: MenuItem }) {
-  const pathname = usePathname();
-  const isActive = pathname === item?.path;
-  const isMegaMenu = item?.path === "/collections/all";
+  const pathname = usePathname()
+  const isActive = pathname === item?.path
+  const isMegaMenu = item?.path === '/collections/all'
 
   return (
     <li
       className={`
         ${isActive && styles.menu_active}
         ${styles.menu_underline}
-        ${item?.depth < 1 && "mr-[7px]"} 
+        ${item?.depth < 1 && 'mr-[7px]'} 
         group/menu-li m-0 py-px`}
     >
       <Link
         href={item?.path}
         className={`transition-300 my-0 flex items-center gap-1 font-medium text-white no-underline 
-        ${!isActive && "group-hover/menu-li:text-secondary"}`}
+        ${!isActive && 'group-hover/menu-li:text-secondary'}`}
       >
         {item?.title}
         {item?.depth > 0 && (
           <ChevronDownIcon
             className={`transition-300 group-hover/menu-li:rotate-180
-            ${!isActive && "group-hover/menu-li:fill-secondary"}`}
+            ${!isActive && 'group-hover/menu-li:fill-secondary'}`}
           />
         )}
       </Link>
@@ -48,5 +48,5 @@ export default function MenuItem({ item }: { item: MenuItem }) {
         </>
       )}
     </li>
-  );
+  )
 }

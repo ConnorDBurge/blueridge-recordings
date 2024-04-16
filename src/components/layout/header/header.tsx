@@ -21,8 +21,8 @@ export async function Header() {
                 priority
                 src="/brand/blueridge.svg"
                 alt="BlueRidge Recordings"
-                width={200} // CSS overides this to 200px on medium screens
-                height={50} // Ignored by CSS
+                width={200}
+                height={50}
               />
             </Link>
             <Search />
