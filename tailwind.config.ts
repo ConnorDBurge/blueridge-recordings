@@ -8,7 +8,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  plugins: [formsPlugin, typographyPlugin],
+  plugins: [formsPlugin, typographyPlugin, require('daisyui')],
   theme: {
     extend: {
       colors: {
@@ -18,6 +18,11 @@ const config: Config = {
         lavender: '#E5E4E8',
         divider: '#D0CFD4',
       },
+    },
+  },
+  variants: {
+    extend: {
+      display: ['peer-checked'],
     },
   },
 }

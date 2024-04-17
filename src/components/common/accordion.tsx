@@ -20,7 +20,7 @@ export function Accordion({
   useEffect(() => {
     const updateDesktopStatus = () => {
       if (typeof window !== 'undefined') {
-        const newIsDesktop = window.innerWidth > 768
+        const newIsDesktop = window.innerWidth >= 768
         setIsDesktop(newIsDesktop)
         if (disabledOnDesktop && newIsDesktop) {
           setAccordionOpen(true)

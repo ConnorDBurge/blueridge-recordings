@@ -6,6 +6,7 @@ export * from './common/box'
 export * from './common/return'
 export * from './common/phone'
 export * from './common/airplane'
+export * from './common/hamburger'
 
 export * from './socials/facebook'
 export * from './socials/instagram'

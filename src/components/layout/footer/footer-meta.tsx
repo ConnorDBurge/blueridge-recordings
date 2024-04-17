@@ -14,10 +14,10 @@ export default async function FooterMetaData() {
           <PaymentMethods />
         </div>
         <div className="border-t-[1px] border-divider w-full h-[1px] mt-5" />
-        <div className="flex md:items-center items-start justify-between md:flex-row mt-5 flex-col-reverse">
+        <div className="flex  md:items-center items-start justify-between md:flex-row mt-5 flex-col-reverse">
           <Link
             href="/"
-            className="no-underline mt-4 md:mb-4 md:mt-0 text-tertiary text-xs"
+            className="md:max-w-[30%] no-underline mt-4 md:mb-4 md:mt-0 text-tertiary text-xs"
           >
             © {new Date().getFullYear()} {storefront?.name}.{' '}
             <br className="md:hidden" />
