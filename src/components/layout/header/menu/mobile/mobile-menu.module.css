@@ -1,0 +1,87 @@
+label.hamburger {
+  --bar-width: 32px;
+  --bar-height: 3px;
+  --hamburger-gap: 6px;
+  --foreground: white;
+  --hamburger-margin: 20px;
+  --animation-timing: 200ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--hamburger-gap);
+  width: 20px;
+  top: 25%;
+  left: var(--hamburger-margin);
+  z-index: 2;
+  cursor: pointer;
+}
+
+label.hamburger:has(input:focus-visible)::before,
+label.hamburger:has(input:focus-visible)::after,
+label.hamburger input:focus-visible {
+  border: 1px solid var(--foreground);
+  box-shadow: 0 0 0 1px var(--foreground);
+}
+
+label.hamburger::before,
+label.hamburger::after,
+label.hamburger input {
+  outline: none;
+  content: '';
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--foreground);
+  border-color: var(--foreground);
+  border-radius: 9999px;
+  transform-origin: left center;
+  transition:
+    opacity var(--animation-timing),
+    width var(--animation-timing),
+    rotate var(--animation-timing),
+    translate var(--animation-timing),
+    background-color var(--animation-timing);
+}
+
+label.hamburger input {
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  pointer-events: none;
+}
+
+label.hamburger:has(input:checked)::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 5px calc(var(--bar-height) / -2);
+}
+
+label.hamburger:has(input:checked)::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 5px calc(var(--bar-height) / 2);
+}
+
+label.hamburger input:checked {
+  opacity: 0;
+  width: 0;
+}
+
+label.hamburger:has(input:checked) ~ div.mobile_menu {
+  transform: translateX(0%);
+}
+
+div.mobile_menu {
+  transform: translateX(-100%);
+  transition: transform 200ms ease-in-out;
+  position: fixed;
+  left: 0;
+  top: 56.28px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+}

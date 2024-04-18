@@ -138,10 +138,6 @@
     padding: 0;
   }
 
-  li {
-    margin-bottom: 0.5rem;
-  }
-
   dl {
     margin: 0.5rem 0;
   }
@@ -151,6 +147,13 @@
     border-radius: 4px;
     font-family: monospace;
     padding: 0.25rem;
+  }
+
+  [type='checkbox']:focus,
+  [type='radio']:focus {
+    outline: none;
+    outline-offset: 0px;
+    box-shadow: none;
   }
 }
 

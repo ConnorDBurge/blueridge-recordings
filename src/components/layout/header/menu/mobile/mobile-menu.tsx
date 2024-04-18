@@ -1,40 +1,45 @@
-'use client'
+import { getAdmin, getMenu } from '@/lib/shopify'
+import { Socials } from '@/components/common'
+import styles from './mobile-menu.module.css'
+import Link from 'next/link'
 
-import { Menu } from '@/lib/shopify/types'
+export async function MobileMenu() {
+  const primaryMenu = await getMenu('primary-menu')
+  const secondaryMenu = await getMenu('secondary-menu')
+  const { contactEmail, timezone, billingAddress, hours } = await getAdmin()
+  const [abbreviated, long] = hours
 
-export default function MobileMenu({ menu }: { menu: Menu }) {
   return (
-    <>
-      <input id="mobile-menu" type="checkbox" className="peer hidden" />
-      <style>
-        {`
-          #mobile-menu:not(:checked) ~ div.menu-div {
-            transform: translateX(-100%);
-          }
-          #mobile-menu:checked ~ div.menu-div {
-            transform: translateX(0%);
-          }
-          div.menu-div {
-            transition: transform 0.2s ease-in-out;
-            position: fixed;
-            left: 0;
-            top: 56.28px;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            z-index: 50;
-          }
-        `}
-      </style>
-      <div className="menu-div bg-primary md:hidden">
-        <div className="border-t-[1px] border-red-400 px-[40px] pb-[60px]">
-          <ul className="size-full text-white">
-            <a href="#">Sidebar Item 1</a>
-            <a href="#">Sidebar Item 2</a>
-          </ul>
+    <div className="md:hidden">
+      <label id="hamburger" className={`${styles.hamburger}`}>
+        <input type="checkbox" />
+      </label>
+      <div
+        className={`bg-primary md:hidden border-t-[1px] border-tertiary ${styles.mobile_menu}`}
+      >
+        <div className="px-[40px] pb-[60px]">
+          <div className="size-full py-4 flex flex-col gap-3 text-white">
+            {secondaryMenu?.items?.map((item, index) => (
+              <Link key={index} href={item?.path} className="no-underline">
+                {item?.title}
+              </Link>
+            ))}
+            <Link
+              href={`tel:${billingAddress?.phone}`}
+              className="no-underline"
+            >
+              +1 {billingAddress?.phone}
+            </Link>
+            <Link href={`mailto:${contactEmail}`} className="no-underline">
+              {contactEmail}
+            </Link>
+            <Link className="no-underline" href="/">
+              {abbreviated?.value || long?.value} {timezone}
+            </Link>
+            <Socials className="mt-2 fill-divider" />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

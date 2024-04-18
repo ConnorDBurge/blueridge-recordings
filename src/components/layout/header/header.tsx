@@ -1,25 +1,22 @@
-import { getMenu } from '@/lib/shopify'
 import { SearchIcon } from '@/components/icons'
 import AnnouncementBar from './anncouncement-bar'
 import { MainMenu } from './menu'
-import MobileMenu from './menu/mobile/mobile-menu'
+import { MobileMenu } from './menu/mobile'
+import styles from './menu/mobile/mobile-menu.module.css'
 import { Search } from './search'
 import { ShoppingCartButton } from './shopping-cart'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export async function Header() {
-  const primaryMenu = await getMenu('primary-menu')
-
   return (
     <>
       <AnnouncementBar />
       <header className="flex flex-col md:pb-0">
         <div className="z-20 bg-primary">
           <div className="container flex items-center gap-8 py-2 md:py-3 lg:gap-16">
-            <label htmlFor="mobile-menu" className="text-white md:hidden">
-              M
-            </label>
+            <MobileMenu />
+
             <Link
               href="/"
               className="block w-[150px] pt-[2px] md:ml-0 md:w-[200px] md:p-0"
@@ -40,7 +37,6 @@ export async function Header() {
           </div>
         </div>
         <MainMenu />
-        <MobileMenu menu={primaryMenu} />
       </header>
     </>
   )

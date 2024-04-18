@@ -1,9 +1,8 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
+import { ShoppingCartIcon } from '@/components/icons'
+import Link from 'next/link'
 
-import { ShoppingCartIcon } from "@/components/icons";
-import Link from "next/link";
-
-export function ShoppingCartButton({ itemCount = 0 }: { itemCount?: number }) {
+export function ShoppingCartButton({ itemCount = 4 }: { itemCount?: number }) {
   return (
     <Link
       href="/cart"
@@ -16,5 +15,5 @@ export function ShoppingCartButton({ itemCount = 0 }: { itemCount?: number }) {
         </span>
       )}
     </Link>
-  );
+  )
 }
