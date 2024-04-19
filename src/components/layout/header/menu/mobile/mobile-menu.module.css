@@ -1,5 +1,5 @@
 label.hamburger {
-  --bar-width: 32px;
+  --bar-width: 28px;
   --bar-height: 3px;
   --hamburger-gap: 6px;
   --foreground: white;
@@ -74,7 +74,7 @@ label.hamburger:has(input:checked) ~ div.mobile_menu {
 }
 
 div.mobile_menu {
-  transform: translateX(-100%);
+  /* transform: translateX(-100%); */
   transition: transform 200ms ease-in-out;
   position: fixed;
   left: 0;

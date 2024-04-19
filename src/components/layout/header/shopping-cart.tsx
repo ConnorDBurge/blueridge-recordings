@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types'
 import { ShoppingCartIcon } from '@/components/icons'
 import Link from 'next/link'
 
-export function ShoppingCartButton({ itemCount = 4 }: { itemCount?: number }) {
+export function ShoppingCartButton({ itemCount = 0 }: { itemCount?: number }) {
   return (
     <Link
       href="/cart"
