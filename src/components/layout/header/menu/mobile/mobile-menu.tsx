@@ -6,7 +6,7 @@ import MobileLink from './mobile-link'
 
 export async function MobileMenu() {
   return (
-    <div className="md:hidden translate-x-[-100%] peer-has-[input[role='mobile-toggle']:checked]:translate-x-[0] transition-300">
+    <div className="group-has-[input[role='mobile-toggle']:checked]/header:translate-x-[0] md:hidden translate-x-[-100%] transition-300">
       <div className="bg-primary border-t-[1px] border-tertiary fixed left-0 w-screen h-screen z-50">
         <div className="flex flex-col gap-4 px-[20px] pb-[60px] overflow-y-auto">
           <PrimaryMenu />

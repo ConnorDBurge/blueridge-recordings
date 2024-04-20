@@ -11,8 +11,8 @@ export async function Header() {
   return (
     <>
       <AnnouncementBar />
-      <header className="flex flex-col md:pb-0 peer">
-        <div className="z-20 bg-primary peer">
+      <header className="flex flex-col md:pb-0 peer/header group/header">
+        <div className="z-20 bg-primary">
           <div className="container flex items-center gap-8 py-2 md:py-3 lg:gap-16">
             <MobileMenuToggle />
             <HeaderLogo />
@@ -26,7 +26,12 @@ export async function Header() {
         <MainMenu />
         <MobileMenu />
       </header>
-      <FrostyOverlay />
+      <FrostyOverlay
+        className=" 
+          peer-has-[li[role='menu-dropdown']:hover]/header:fixed 
+          peer-has-[li[role='menu-dropdown']:hover]/header:opacity-100 
+          peer-has-[li[role='menu-dropdown']:hover]/header:backdrop-blur-[1.5px]"
+      />
     </>
   )
 }
