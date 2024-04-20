@@ -1,54 +1,66 @@
-'use client'
-
+import { getMenu } from '@/lib/shopify'
 import { MenuItem } from '@/lib/shopify/types'
 import { ChevronDownIcon } from '@/components/icons'
 import { ContactMenu } from './contact-menu'
 import MobileLink from './mobile-link'
-import styles from './mobile-menu.module.css'
 
-export function MobileMenu({ items }: { items: MenuItem[] }) {
+export async function MobileMenu() {
   return (
-    <div className="md:hidden">
-      {/* <div
-        className={`bg-primary md:hidden border-t-[1px] border-tertiary ${styles.mobile_menu}`}
-      >
+    <div className="md:hidden translate-x-[-100%] peer-has-[input[role='mobile-toggle']:checked]:translate-x-[0] transition-300">
+      <div className="bg-primary border-t-[1px] border-tertiary fixed left-0 w-screen h-screen z-50">
         <div className="flex flex-col gap-4 px-[20px] pb-[60px] overflow-y-auto">
-          <PrimaryMenu items={items} />
+          <PrimaryMenu />
           <ContactMenu />
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }
 
-function PrimaryMenu({ items }: { items: MenuItem[] }) {
+async function PrimaryMenu() {
+  const primaryMenu = await getMenu('primary-menu')
+  const items = primaryMenu?.items as MenuItem[]
+
   return (
     <div className="flex flex-col">
       {items?.map((item, index) => (
-        <label
-          key={index}
-          className="flex justify-between py-6 border-b-[1px] border-tertiary px-[20px]"
-        >
-          <input
-            type="radio"
-            name="mobile-menu-primary"
-            value={item?.title}
-            className="hidden"
-          />
+        <>
           {item?.items?.length === 0 ? (
             <MobileLink
               href={item?.path}
-              className="text-white no-underline w-full"
+              className="no-underline w-full h-full"
             >
-              {item?.title}
+              <label
+                key={index}
+                className="flex justify-between border-b-[1px] border-tertiary px-[20px] py-6 text-white"
+              >
+                <input
+                  type="radio"
+                  name="mobile-menu-primary"
+                  value={item?.title}
+                  className="hidden"
+                />
+                {item?.title}
+              </label>
             </MobileLink>
           ) : (
             <>
-              <span className="text-white flex-1">{item?.title}</span>
-              <ChevronDownIcon className="-rotate-90" />
+              <label
+                key={index}
+                className="flex justify-between border-b-[1px] border-tertiary px-[20px] py-6"
+              >
+                <input
+                  type="radio"
+                  name="mobile-menu-primary"
+                  value={item?.title}
+                  className="hidden"
+                />
+                <span className="text-white flex-1">{item?.title}</span>
+                <ChevronDownIcon className="-rotate-90" />
+              </label>
             </>
           )}
-        </label>
+        </>
       ))}
     </div>
   )

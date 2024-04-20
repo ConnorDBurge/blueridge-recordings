@@ -24,7 +24,7 @@ export default function MenuItem({ item }: { item: MenuItem }) {
     >
       <Link
         href={item?.path}
-        className={`transition-300 my-0 flex items-center gap-1 font-medium text-white no-underline 
+        className={`transition-300 my-0 flex items-center gap-1 font-medium text-white no-underline px-[6px]
         ${!isActive && 'group-hover/menu-li:text-secondary'}`}
       >
         {item?.title}
@@ -42,7 +42,7 @@ export default function MenuItem({ item }: { item: MenuItem }) {
               <MegaMenu menu={item} />
             </div>
           ) : (
-            <div className="transition-300 absolute ml-[-10px] mt-[3px] max-h-0 overflow-hidden rounded-b-lg group-hover/menu-li:max-h-[75vh]">
+            <div className="transition-300 absolute mt-[3px] max-h-0 overflow-hidden rounded-b-lg group-hover/menu-li:max-h-[75vh]">
               <FlyoutMenu menu={item} />
             </div>
           )}

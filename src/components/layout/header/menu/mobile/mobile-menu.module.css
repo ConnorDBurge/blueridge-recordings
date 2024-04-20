@@ -18,11 +18,10 @@ label.hamburger {
   cursor: pointer;
 }
 
-label.hamburger:has(input:focus-visible)::before,
-label.hamburger:has(input:focus-visible)::after,
-label.hamburger input:focus-visible {
-  border: 1px solid var(--foreground);
-  box-shadow: 0 0 0 1px var(--foreground);
+@media (min-width: 768px) {
+  label.hamburger {
+    display: none !important;
+  }
 }
 
 label.hamburger::before,
@@ -67,20 +66,4 @@ label.hamburger:has(input:checked)::after {
 label.hamburger input:checked {
   opacity: 0;
   width: 0;
-}
-
-label.hamburger:has(input:checked) ~ div.mobile_menu {
-  transform: translateX(0%);
-}
-
-div.mobile_menu {
-  /* transform: translateX(-100%); */
-  transition: transform 200ms ease-in-out;
-  position: fixed;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  z-index: 50;
 }

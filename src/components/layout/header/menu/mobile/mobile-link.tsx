@@ -7,7 +7,6 @@ export default function MobileLink({
   href,
   children,
   className,
-  ...rest
 }: {
   href: string
   children: any
@@ -17,7 +16,6 @@ export default function MobileLink({
     <Link
       href={href}
       className={className}
-      {...rest}
       onClick={() => {
         const checkbox: HTMLInputElement | null = document.getElementById(
           'mobile-toggle',

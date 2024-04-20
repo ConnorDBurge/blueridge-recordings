@@ -5,26 +5,29 @@
 }
 
 .menu_underline::after {
-  content: "";
+  content: '';
   display: block;
   width: 0;
   height: 2px;
+  margin-left: 6px;
   background: #fed8a7;
   transition: width 0.3s;
   border-radius: 5px;
 }
 
 .menu_underline:hover::after {
-  width: 100%;
+  width: calc(100% - 12px); /* Adjust width to account for padding */
+  /* Align with the text inside */
   transition: width 0.3s;
 }
 
 .menu_active::after {
-  content: "";
+  content: '';
   display: block;
-  width: 100%;
+  width: calc(100% - 12px); /* Adjust width to account for padding */
   height: 2px;
   background: #fff;
+  margin-left: 6px; /* Align with the text inside */
   border-radius: 5px;
 }
 
@@ -33,24 +36,19 @@
 }
 
 .mega_menu_underline::after {
-  content: "";
+  content: '';
   display: block;
-  left: 0;
-  width: 100%;
+  width: calc(100% - 24px); /* Adjusted width */
   height: 2px;
-  margin: 12px 0;
-  background-color: #2a283c; /* Start with a white background */
-  background-image: linear-gradient(
-    to right,
-    #fed8a7 0%,
-    #fed8a7 100%
-  ); /* Tan color gradient */
-  background-size: 0% 100%; /* Start with no width */
+  margin: 12px 6px; /* Adjusted margin */
+  background-color: #2a283c;
+  background-image: linear-gradient(to right, #fed8a7 0%, #fed8a7 100%);
+  background-size: 0% 100%;
   background-repeat: no-repeat;
   transition: background-size 0.3s;
   border-radius: 5px;
 }
 
 .mega_menu_parent:hover .mega_menu_underline::after {
-  background-size: 100% 100%; /* Expand the background gradient to full width on hover */
+  background-size: 100% 100%;
 }
