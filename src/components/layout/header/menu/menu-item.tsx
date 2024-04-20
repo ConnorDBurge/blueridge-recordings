@@ -15,6 +15,7 @@ export default function MenuItem({ item }: { item: MenuItem }) {
 
   return (
     <li
+      role={item?.depth > 0 ? 'menu-dropdown' : undefined}
       className={`
         ${isActive && styles.menu_active}
         ${styles.menu_underline}

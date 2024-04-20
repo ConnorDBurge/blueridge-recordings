@@ -28,7 +28,11 @@ export default async function RootLayout({
       <head>
         <link rel="icon" href={favicon} />
       </head>
-      <body>
+      <body
+        className="
+          has-[input[role='mobile-toggle']:checked]:overflow-hidden 
+          has-[li[role='menu-dropdown']:hover]:overflow-hidden"
+      >
         <Header />
         <Suspense>{children}</Suspense>
         <Footer />

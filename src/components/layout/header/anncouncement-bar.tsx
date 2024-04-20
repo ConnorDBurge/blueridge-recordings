@@ -7,7 +7,7 @@ export default async function AnnouncementBar() {
   const Divider = () => <span className="font-thin text-white">|</span>
 
   return (
-    <div className="bg-black hidden h-8 md:block z-20">
+    <div className="bg-black hidden h-8 md:block z-30">
       <div className="container">
         <div className="full-size flex">
           <div className="flex-1" />
