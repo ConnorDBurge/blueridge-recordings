@@ -18,8 +18,9 @@ export async function PaymentMethods() {
             priority
             src={`/payments/${brand}.svg`}
             alt={brand}
-            width={36}
-            height={22}
+            height={0}
+            width={0}
+            className="w-9 h-[22px]"
           />
         </Link>
       ))}

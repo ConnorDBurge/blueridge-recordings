@@ -29,8 +29,7 @@ export async function Header() {
       <FrostyOverlay
         className=" 
           peer-has-[li[role='menu-dropdown']:hover]/header:fixed 
-          peer-has-[li[role='menu-dropdown']:hover]/header:opacity-100 
-          peer-has-[li[role='menu-dropdown']:hover]/header:backdrop-blur-[1.5px]"
+          peer-has-[li[role='menu-dropdown']:hover]/header:opacity-100"
       />
     </>
   )
