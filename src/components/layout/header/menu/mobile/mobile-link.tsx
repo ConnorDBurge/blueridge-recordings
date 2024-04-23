@@ -7,10 +7,12 @@ export default function MobileLink({
   href,
   children,
   className,
+  onClick,
 }: {
   href: string
   children: any
   className?: string
+  onClick?: () => void
 }) {
   return (
     <Link
@@ -23,6 +25,7 @@ export default function MobileLink({
         if (checkbox) {
           checkbox.checked = false
         }
+        onClick && onClick()
       }}
     >
       {children}

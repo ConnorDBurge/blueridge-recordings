@@ -11,6 +11,9 @@ const config: Config = {
   plugins: [formsPlugin, typographyPlugin],
   theme: {
     extend: {
+      fontFamily: {
+        dzungdakao: ['UVNDzungDakao', 'sans-serif'],
+      },
       colors: {
         primary: '#141028',
         secondary: '#FED8A7',

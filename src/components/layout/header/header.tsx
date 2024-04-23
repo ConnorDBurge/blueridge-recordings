@@ -13,7 +13,7 @@ export async function Header() {
       <AnnouncementBar />
       <header className="flex flex-col md:pb-0 peer/header group/header">
         <div className="z-20 bg-primary">
-          <div className="container flex items-center gap-8 py-2 md:py-3 lg:gap-16">
+          <div className="container flex items-center gap-6 py-2 md:py-3 lg:gap-16">
             <MobileMenuToggle />
             <HeaderLogo />
             <Search />
