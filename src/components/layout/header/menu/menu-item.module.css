@@ -38,9 +38,9 @@
 .mega_menu_underline::after {
   content: '';
   display: block;
-  width: calc(100% - 24px); /* Adjusted width */
+  width: 100%; /* Adjusted width */
   height: 2px;
-  margin: 12px 6px; /* Adjusted margin */
+  margin: 12px 0px; /* Adjusted margin */
   background-color: #2a283c;
   background-image: linear-gradient(to right, #fed8a7 0%, #fed8a7 100%);
   background-size: 0% 100%;
