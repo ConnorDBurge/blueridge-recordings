@@ -44,7 +44,7 @@ export function PrimaryMenu({
                 <ChevronDownIcon className="-rotate-90" />
               </div>
               <div
-                className={`bg-primary absolute top-0 left-0 w-screen h-full z-50 overflow-y-auto transition-300 ${activeMenu === index ? 'translate-x-[0]' : 'translate-x-[-100%]'}`}
+                className={`bg-primary absolute top-0 left-0 w-screen h-full z-50 overflow-y-auto transition-300 ${activeMenu === index ? 'translate-x-[0]' : 'translate-x-[100%]'}`}
               >
                 <div className="px-[20px] flex flex-col divide-y-[1px] divide-tertiary">
                   <div
