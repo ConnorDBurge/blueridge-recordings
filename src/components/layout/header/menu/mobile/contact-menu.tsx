@@ -8,7 +8,7 @@ export async function ContactMenu() {
   const [abbreviated, long] = hours
 
   return (
-    <div className="size-full py-4 flex flex-col gap-3 text-white px-[20px]">
+    <div className="size-full py-4 flex flex-col gap-3 text-white px-[20px] mb-[60px]">
       {secondaryMenu?.items?.map((item, index) => (
         <Link key={index} href={item?.path} className="no-underline">
           {item?.title}
