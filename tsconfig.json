@@ -27,7 +27,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/lib/shopify/fragments/index.js"
+    "src/lib/shopify/fragments/index.js",
+    "next.config.mts",
+    "next.config.mjs"
   ],
   "exclude": ["node_modules"]
 }
