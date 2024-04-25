@@ -1,3 +1,4 @@
+import React from 'react'
 import Image from 'next/image'
 
 export const Showcase = ({
@@ -14,7 +15,9 @@ export const Showcase = ({
   </div>
 )
 
-Showcase.Image = ({
+Showcase.displayName = 'Showcase'
+
+const ShowcaseImage = ({
   src,
   alt,
   width = 2000,
@@ -39,7 +42,10 @@ Showcase.Image = ({
   </div>
 )
 
-Showcase.Title = ({
+ShowcaseImage.displayName = 'Showcase.Image'
+Showcase.Image = ShowcaseImage
+
+const ShowcaseTitle = ({
   children,
   className,
 }: {
@@ -47,7 +53,10 @@ Showcase.Title = ({
   className?: string
 }) => <h1 className={`sm:text-[35px] ${className}`}>{children}</h1>
 
-Showcase.Body = ({
+ShowcaseTitle.displayName = 'Showcase.Title'
+Showcase.Title = ShowcaseTitle
+
+const ShowcaseBody = ({
   children,
   className,
 }: {
@@ -60,3 +69,6 @@ Showcase.Body = ({
     {children}
   </div>
 )
+
+ShowcaseBody.displayName = 'Showcase.Body'
+Showcase.Body = ShowcaseBody

@@ -12,7 +12,7 @@ export default function RootPage() {
               alt="girl-streaming"
             />
             <Showcase.Body>
-              <Showcase.Title>
+              <Showcase.Title className="tracking-wider">
                 Elevate Your Voice. <br />
                 Amplify Your Vision.
               </Showcase.Title>

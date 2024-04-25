@@ -10,6 +10,11 @@
 }
 
 @layer base {
+  ::selection {
+    background-color: #2a283c;
+    color: white !important;
+  }
+
   *,
   *::after,
   *::before {
